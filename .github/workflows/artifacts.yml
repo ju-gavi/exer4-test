@@ -6,16 +6,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Cache
-      uses: actions/cache@v4
-      with:
-        path: ~/.npm
-        key: buildCache
+      - uses: actions/checkout@v4
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: buildCache
      - run: npm ci
      - run: npm test -- --coverage
-      env:
-        CI: true
+        env:
+          CI: true
     - name: Upload code coverage
       uses: actions/upload-artifact@v4.6.2
       with:
